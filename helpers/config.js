@@ -1,0 +1,5 @@
+module.exports = {
+    CLOUDINARY_USER_NAME: "di7hfwkes",
+    CLOUDINARY_API_KEY: "848766486129596",
+    CLOUDINARY_API_SECRET: "UOnooRdcTWhvYGttjsl-g9QG5xE"
+}

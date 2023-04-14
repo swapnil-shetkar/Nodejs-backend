@@ -1,39 +1,7 @@
 const assignment = require('../Models/teacherModel/assignment.js');
 const notes = require('../Models/teacherModel/notes.js');
 const questionPaper = require('../Models/teacherModel/questionPaper.js');
-const cloudinary = require('cloudinary').v2;
-require('dotenv').config();
-
-
-// exports.assignmentUpload = async (req, resp) => {
-//     const result = await cloudinary.uploader.upload(req.file.path);
-//     const data = new assignment({
-//         "teacher_id": req.body.teacher_id,
-//         "subject_id": req.body.subject_id,
-//         "file_path": result.url
-
-//     })
-//     console.log(result)
-//     const dataSaved = await data.save();
-//     resp.status(200).json(dataSaved);
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+const cloudinary = require('../helpers/cloudinaryUpload.js')
 
 exports.assignmentUpload = async (req, resp) => {
     const file = req.files.uploadassignment;

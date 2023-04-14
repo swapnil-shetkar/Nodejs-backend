@@ -1,4 +1,5 @@
 const teacher=require('../Models/adminModel/teacherProfile');
+const cloudinary=require('../helpers/cloudinaryUpload')
 
 exports.teacherProfile=async (req, resp) => {
         console.log(req.body);
