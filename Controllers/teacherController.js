@@ -41,7 +41,7 @@ exports.assignmentDelete = async (req, resp) => {
 }
 
 exports.assignmentView = async (req, resp) => {
-    const data = await assignment.findById(req.params.id );
+    const data = await assignment.findById(req.params.id);
     console.log(data);
     const imagePath = data.file_path;
     resp.send(imagePath);
