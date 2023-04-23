@@ -65,13 +65,13 @@ exports.QpaperUpload = async (req, resp) => {
 }
 
 exports.QpaperDelete = async (req, resp) => {
-    const data = await questionPaper.find(req.params);
-    const imageUrl = data[0].file_path;
+    const data = await questionPaper.findById(req.params.id);
+    const imageUrl = data.file_path;
     const urlArray = imageUrl.split('/');
     const image = urlArray[urlArray.length - 1];
     const imageName = image.split('.')[0];
 
-    QpaperModel.deleteOne(req.params).then(() => {
+    questionPaper.deleteOne({ _id: req.params.id }).then(() => {
         cloudinary.uploader.destroy(imageName, (error, result) => {
             resp.send(result);
         }).catch((error) => {
@@ -82,15 +82,15 @@ exports.QpaperDelete = async (req, resp) => {
     })
 }
 exports.QpaperView = async (req, resp) => {
-    const data = await questionPaper.find(req.params);
-    const imagePath = data[0].file_path;
+    const data = await questionPaper.findById(req.params.id);
+    const imagePath = data.file_path;
     resp.send(imagePath);
 }
 
 exports.notesUpload = async (req, resp) => {
     const file = req.files.uploadnote;
     cloudinary.uploader.upload(file.tempFilePath, async (error, result) => {
-        const data = new noteModel({
+        const data = new notes({
             "teacher_id": req.body.teacher_id,
             "subject_id": req.body.subject_id,
             "file_path": result.url
@@ -104,13 +104,13 @@ exports.notesUpload = async (req, resp) => {
 }
 
 exports.notesDelete = async (req, resp) => {
-    const data = await noteModel.find(req.params);
-    const imageUrl = data[0].file_path;
+    const data = await notes.findById(req.params.id);
+    const imageUrl = data.file_path;
     const urlArray = imageUrl.split('/');
     const image = urlArray[urlArray.length - 1];
     const imageName = image.split('.')[0];
 
-    noteModel.deleteOne(req.params).then(() => {
+    notes.deleteOne({ _id: req.params.id }).then(() => {
         cloudinary.uploader.destroy(imageName, (error, result) => {
             resp.send(result);
         }).catch((error) => {
@@ -122,8 +122,8 @@ exports.notesDelete = async (req, resp) => {
 }
 
 exports.notesView = async (req, resp) => {
-    const data = await noteModel.find(req.params);
-    const imagePath = data[0].file_path;
+    const data = await notes.findById(req.params.id);
+    const imagePath = data.file_path;
     resp.send(imagePath);
 }
 

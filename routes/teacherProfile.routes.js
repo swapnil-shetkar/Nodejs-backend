@@ -12,4 +12,6 @@ router.get('/:id',async(req,resp)=>{
     await adminController.getTeacherImage(req,resp);
 })
 
+
+
 module.exports=router;
