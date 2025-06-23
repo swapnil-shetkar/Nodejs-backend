@@ -28,7 +28,7 @@ app.use(fileUpload({
 
 app.use(express.json());
 
-app.use('/assignment', assignmentRoute);
+app.use('/assignment', assignmentRoute);//testcomit
 app.use('/teacherProfile', profileRoute);
 app.use('/studentProfile', studentProfileRoute);
 app.use('/qpaper', qpaperRoute);
